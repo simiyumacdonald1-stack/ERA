@@ -1,0 +1,18 @@
+syntax = "proto3";
+package era;
+
+service Predictor {
+  // Predict returns win probabilities and an explanation
+  rpc Predict (PredictRequest) returns (PredictResponse) {}
+}
+
+message PredictRequest {
+  string match_id = 1;
+  map<string,double> features = 2;
+}
+
+message PredictResponse {
+  double win_prob_a = 1;
+  double win_prob_b = 2;
+  string explanation = 3;
+}
